@@ -37,244 +37,155 @@ HAVING condition;
 ```
 
 **Question 1**
-How many patients are covered by each insurance company?
-
-Sample table:Insurance Table
-
-name               type
------------------  ----------
-InsuranceID        INTEGER
-PatientID          INTEGER
-InsuranceCompany   TEXT
-PolicyNumber       TEXT
-PolicyHolder       TEXT
-ValidityPeriod     TEXT
+--
+![{C4EAD905-5F81-49D6-BEAD-08963A5DB43E}](https://github.com/user-attachments/assets/f7cf2b25-37df-47ed-990a-88a959aad7bc)
 
 ```sql
-select InsuranceCompany,count(distinct patientid) as TotalPatients from insurance group by InsuranceCompany;
+select Medication,count() as TotalPrescriptions
+from Prescriptions
+group by Medication
 ```
 
 **Output:**
 
-<img width="1220" height="768" alt="image" src="https://github.com/user-attachments/assets/f39212f2-6de6-4b21-8df9-2054ec2ea15c" />
-
+![{999353BE-84CC-4020-BA6E-EA016385FAF6}](https://github.com/user-attachments/assets/a9545fb8-8dd7-4b00-9f35-236d1a2adb83)
 
 **Question 2**
 ---
-How many prescriptions were written for each medication?
-
-Sample tablePrescriptions Table
-
-
-
-For example:
-
-Result
-Medication     TotalPrescriptions
--------------  ------------------
-Ciprofloxacin  1
-Doxorubicin    1
-Ibuprofen      1
-Levothyroxine  1
-Lisinopril     1
-MMR            1
-Pending        1
-Prenatal vita  1
-Sertraline     1
-Topiramate     1
-
+![{5DD58B65-315D-4DB4-9109-81AA63EF2CB5}](https://github.com/user-attachments/assets/f2e6a7c7-f85d-4cad-8db9-f13bb3f92bf0)
 
 ```sql
-select Medication,count(distinct prescriptionid) as TotalPrescriptions from Prescriptions group by medication;
+select DoctorID,count() as TotalPrescriptions from Prescriptions
+group by DoctorID
 ```
 
 **Output:**
 
-<img width="1230" height="845" alt="image" src="https://github.com/user-attachments/assets/dd944b04-54ee-45d9-baed-c8980a2575a7" />
-
+![{FA459BF6-05A7-4193-B80E-813A17BC37A8}](https://github.com/user-attachments/assets/7d84fcff-941e-4f70-ac37-b186554589bb)
 
 **Question 3**
----
-How many appointments are scheduled for each patient?
-
-Sample table: Appointments Table
-
-name                  type
---------------------  ----------
-AppointmentID         INTEGER
-PatientID             INTEGER
-DoctorID              INTEGER
-AppointmentDateTime   DATETIME
-Purpose               TEXT
-Status                TEXT
-For example:
-
-Result
-PatientID   TotalAppointments
-----------  -----------------
-3           3
-5           2
-6           1
-7           1
-10          3
+![{EEB04734-2C71-471A-9B3A-1E816F522C47}](https://github.com/user-attachments/assets/33560868-4663-4285-9fed-26ed73683330)
 
 
 ```sql
-select Patientid,count(distinct appointmentid) as TotalAppointments from Appointments group by patientid;
+SELECT PatientID,COUNT() as TotalRecords
+from MedicalRecords
+group by PatientID
 ```
 
 **Output:**
 
-<img width="1226" height="700" alt="image" src="https://github.com/user-attachments/assets/04d2da67-6ae6-4e43-aeb8-4598baedf0e4" />
+![{7DA39C03-67A4-4D6A-9E1E-12033232E3BC}](https://github.com/user-attachments/assets/2fb7982d-47a5-4d32-bfa6-d26eead47073)
 
 
 **Question 4**
 ---
-Write a SQL query to find the Fruit with the lowest available quantity.
+![{0BF1E2DC-751E-46A5-A5E1-281EB2B62289}](https://github.com/user-attachments/assets/bfb51534-6964-4a2d-9e00-bd8e563ca133)
 
-Note: Inventory attribute contains amount of fruits
 
-Table: fruits
-
-name        type
-----------  ----------
-id          INTEGER
-name        TEXT
-unit        TEXT
-inventory   INTEGER
-price       REAL
 ```sql
-select name as fruit_name,inventory as lowest_quantity from fruits where inventory=(select min(inventory) from fruits);
+select name,length(name) as length from customer
+ORDER BY LENGTH(name) DESC
+LIMIT 1
+
 ```
 
 **Output:**
 
-<img width="1240" height="403" alt="image" src="https://github.com/user-attachments/assets/8cf122e5-b3c3-4de3-9aab-7f08249a6f50" />
+![{F55D891C-13BC-4A19-918A-E7FC1198BD84}](https://github.com/user-attachments/assets/b3736946-5409-4b97-84cc-6214c8bb1fe0)
 
 
 **Question 5**
 ---
-Write a SQL query to find the total income of employees aged 40 or above.
-
-Table: employee
-
-name        type
-----------  ----------
-id          INTEGER
-name        TEXT
-age         INTEGER
-city        TEXT
-income      INTEGER
-For example:
-
-Result
-total_income
-------------
-1800000
+![{48B19B28-4975-4601-8A17-4807F6A71D73}](https://github.com/user-attachments/assets/35da9886-25a1-45fa-bfec-b26a0372443a)
 
 
 ```sql
-select sum(income) as total_income from employee where age>= 40;
+select sum(income) as 'total_income' from employee
+where age>=40
 ```
 
 **Output:**
 
-<img width="1233" height="396" alt="image" src="https://github.com/user-attachments/assets/dea728c9-4271-461b-a5f7-115c2c5daf6e" />
+![{EED6A9DE-B6A8-4AA1-88CD-D0AEE424A1DD}](https://github.com/user-attachments/assets/34d7f6ee-bd6c-4ab6-a2a3-edb6da5e6650)
 
 
 **Question 6**
----
-Write a SQL query to  find the average salary of all employees?
+![{535B9A25-A992-44B8-95A1-48F871E0F127}](https://github.com/user-attachments/assets/53db6d45-1bbf-42dd-850b-4478873ca6e6)
 
-Table: employee
 
-name        type
-----------  ----------
-id          INTEGER
-name        TEXT
-age         INTEGER
-city        TEXT
-income      INTEGER
 ```sql
-select avg(income) as Average_Salary from employee;
+select COUNT(DISTINCT(salesman_id)) as 'COUNT' FROM orders
 ```
 
 **Output:**
 
-<img width="1228" height="406" alt="image" src="https://github.com/user-attachments/assets/3bef5955-145a-476e-b043-372af773528a" />
+![{8ED24307-016F-4CC2-9274-C52518ECF991}](https://github.com/user-attachments/assets/8b4327ed-507b-4622-b661-7caae5f14a81)
 
 
 **Question 7**
 ---
-Write a SQL query to find the minimum purchase amount.
+![{024D2596-7B12-4155-8102-0B19E8C148DB}](https://github.com/user-attachments/assets/471c2ed3-115c-48d1-935b-f50eba65198f)
 
-Sample table: orders
-
-ord_no      purch_amt   ord_date    customer_id  salesman_id
-
-----------  ----------  ----------  -----------  -----------
-
-70001       150.5       2012-10-05  3005         5002
-
-70009       270.65      2012-09-10  3001         5005
-
-70002       65.26       2012-10-05  3002         5001
 
 ```sql
-select min(purch_amt) as MINIMUM from orders;
+select max(age) - min(age) as 'age_difference' from employee
 ```
 
 **Output:**
 
-<img width="1244" height="405" alt="image" src="https://github.com/user-attachments/assets/cfa463db-851f-4622-b6fe-38f7b12108f1" />
+![{75234451-6E7B-4C2E-AFBC-F01C4C92B866}](https://github.com/user-attachments/assets/b95f18f6-5b9b-488b-a16d-d166827598e9)
 
 
 **Question 8**
 ---
-Write the SQL query that accomplishes the selection of total number of products for each category from the "products" table, and includes only those products where the minimum category ID is less than 3.
-
-Sample table: products
+![{C37A31C9-DB3D-46E9-825D-E4E8F6FCEDA9}](https://github.com/user-attachments/assets/816d8f02-fa5a-4a13-931d-9bf45c9dd957)
 
 
 ```sql
-select category_id,count(product_name) from products where category_id<3 group by category_id ;
+select category_id, sum(price*category_id) as 'Revenue' from products
+group by category_id
+having Revenue > 25
 ```
 
 **Output:**
 
-<img width="1228" height="444" alt="image" src="https://github.com/user-attachments/assets/32376ce7-fb20-4683-842a-de062c46dab5" />
+![{1D0D9F97-C574-4D3E-AD9F-95210D4C3012}](https://github.com/user-attachments/assets/612cce80-0dc2-4e6a-9c99-f245bcbd8f37)
 
 
 **Question 9**
 ---
-Which cities (addresses) in the "customer1" table have an average salary lesser than Rs. 15000
+![{640C8FAD-AE6D-49F8-B061-9A87510D067D}](https://github.com/user-attachments/assets/71d9668a-276a-4a4f-8639-7d8ce5b2c4d6)
 
-Sample table: customer1
 
 ```sql
-select address, AVG(salary) from customer1 group by address having avg(salary)<15000;
+select PatientID,COUNT(*) AS 'TotalRecords' from MedicalRecords
+group by PatientID
+HAVING TotalRecords > 3
 ```
 
 **Output:**
 
-<img width="1225" height="698" alt="image" src="https://github.com/user-attachments/assets/14653062-533f-4dd8-87f9-8509a6d5590e" />
+![{36CB33B5-20BC-4B47-A97C-4BAA5319C36B}](https://github.com/user-attachments/assets/0186a549-5974-4a8a-9021-ab5a198b4c6a)
 
 
 **Question 10**
 ---
-Write the SQL query that achieves the grouping of data by age intervals using the expression (age/5)5, calculates the average age for each group, and excludes groups where the average age is not less than 24.
+![{6BBD9AC7-4DA6-4C27-8D8D-717B1BFC5E17}](https://github.com/user-attachments/assets/c2205938-7bba-43c0-9de7-dbed18de9ab8)
 
-Sample table: customer1
 
 ```sql
-select (age/5)*5 as age_group,AVG(age) from customer1 group by (age/5)*5 having avg(age)<24;
+select category_id,count(*) as COUNT FROM products
+group by category_id
+having category_id>2
 ```
 
 **Output:**
 
-<img width="1238" height="423" alt="image" src="https://github.com/user-attachments/assets/05f856b9-7746-4b9b-a91c-55dc5fd01bfe" />
+![{20F7198D-1790-4B85-9D27-C42AE4475B11}](https://github.com/user-attachments/assets/8044026c-f4db-43ce-977e-b3d0b7e35172)
 
 
 
 ## RESULT
 Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
+
