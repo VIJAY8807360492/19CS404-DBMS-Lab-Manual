@@ -341,5 +341,3 @@ WHERE grade = (
 
 ## RESULT
 Thus, the SQL queries to implement subqueries and views have been executed successfully.
-
-
